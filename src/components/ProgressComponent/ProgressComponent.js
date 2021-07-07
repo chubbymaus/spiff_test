@@ -10,13 +10,14 @@ class ProgressComponent extends Component {
     };
 
     handleClick() {
-        console.log('clicked')
         this.setState({showProgress: true, requestButton: "Loading..."})
     }
 
     finishProgress() {
-        console.log('clicked')
-        this.setState({isFinished: true})
+        this.setState({isFinished: true, requestButton: "Start Request"})
+        setTimeout(() => {
+            this.setState({showProgress: false})
+        },3000)
     }
 
     render() {
@@ -24,9 +25,10 @@ class ProgressComponent extends Component {
             <div className="progress-bar-buttons">
                 {
                     this.state.showProgress &&
-                    <ProgressBar/>
+                    <ProgressBar isFinished={this.state.isFinished}/>
                 }
-                <button onClick={() => this.handleClick()} className="button request-button">{this.state.requestButton}</button>
+                <button onClick={() => this.handleClick()}
+                        className="button request-button">{this.state.requestButton}</button>
                 <button onClick={() => this.finishProgress()} className="button finish-button">Finish Request</button>
             </div>
         );
