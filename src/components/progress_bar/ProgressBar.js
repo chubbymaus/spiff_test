@@ -8,7 +8,14 @@ class ProgressBar extends Component {
     };
 
     componentDidMount() {
-        setInterval(() => this.setState({progress: this.state.progress + 10} ), 15000/10);
+        setInterval(() => {
+                if (this.state.progress < 90) {
+                    this.setState({progress: this.state.progress + 10})
+                }
+            }
+            ,
+            1667
+        );
     }
 
     render() {

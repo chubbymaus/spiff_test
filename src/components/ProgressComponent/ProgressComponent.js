@@ -3,10 +3,10 @@ import "./ProgressComponent.scss"
 import ProgressBar from "../progress_bar/ProgressBar";
 
 class ProgressComponent extends Component {
-
     state = {
         requestButton: "Start Request",
-        showProgress: false
+        showProgress: false,
+        isFinished: false,
     };
 
     handleClick() {
@@ -16,7 +16,7 @@ class ProgressComponent extends Component {
 
     finishProgress() {
         console.log('clicked')
-        this.setState({showProgress: true, requestButton: "Loading..."})
+        this.setState({isFinished: true})
     }
 
     render() {
@@ -27,7 +27,7 @@ class ProgressComponent extends Component {
                     <ProgressBar/>
                 }
                 <button onClick={() => this.handleClick()} className="button request-button">{this.state.requestButton}</button>
-                <button onClick={() => this.finishProgress()} className="button finish-button">{this.state.requestButton}</button>
+                <button onClick={() => this.finishProgress()} className="button finish-button">Finish Request</button>
             </div>
         );
     }
