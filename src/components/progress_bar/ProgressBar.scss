@@ -7,12 +7,13 @@ progress {
   top: 0;
   left: 0;
 
-  &::-webkit-progress-value{
+  &::-webkit-progress-value {
     background: linear-gradient(to right, orange, red) !important;;
+    transition: width 1s ease;
   }
 }
 
-.hide-bar{
-   opacity: 0;
-   transition: all 250ms linear 3s;
+.hide-bar {
+  opacity: 0;
+  transition: all 250ms linear 3s;
 }
