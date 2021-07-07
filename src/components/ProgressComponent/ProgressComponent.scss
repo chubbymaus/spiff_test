@@ -40,3 +40,16 @@
     border-width: 3px;
   }
 }
+
+.toggle-button {
+  border-color: $blue;
+  color: $blue;
+
+  &:hover {
+    border-width: 2px;
+  }
+
+  &:active {
+    border-width: 3px;
+  }
+}

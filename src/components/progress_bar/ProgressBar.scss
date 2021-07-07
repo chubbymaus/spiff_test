@@ -8,7 +8,7 @@ progress {
   left: 0;
 
   &::-webkit-progress-value {
-    background: linear-gradient(to right, orange, red) !important;;
+    background: linear-gradient(to right, orange, red) !important;
     transition: width 1s ease;
   }
 }

@@ -8,15 +8,35 @@ class ProgressBar extends Component {
     };
 
     componentDidMount() {
-        setInterval(() => {
-            if (this.state.progress < 90) {
-                this.setState({progress: this.state.progress + 10})
-            }
-        }, 1667);
+        if(this.props.breakpoints === false ){
+            setInterval(() => {
+                if (this.state.progress < 90) {
+                    this.setState({progress: this.state.progress + 10})
+                }
+            }, 1667);
+        } else {
+            setTimeout(() => {
+                if (this.state.progress < 90) {
+                    this.setState({progress: this.state.progress + 1})
+                }
+            }, 250);
+        }
     }
 
-    componentWillReceiveProps(nextProps, nextContext){
-        if(nextProps.isFinished === true){
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.props.breakpoints === true && this.state.progress !== prevState){
+            const breakpoints = [10, 34, 60, 78, 90]
+
+            setTimeout(() => {
+                if (this.state.progress < 90) {
+                    this.setState({progress: this.state.progress + 1})
+                }
+            }, (breakpoints.includes(this.state.progress) ? 2000 : 250));
+        }
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+        if (nextProps.isFinished === true) {
             this.setState({progress: 100})
         }
     }
